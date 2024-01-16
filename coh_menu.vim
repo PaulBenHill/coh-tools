@@ -8,15 +8,16 @@
 "endif
 
 " Keywords
- syn keyword menuKeywords Divider 
+syn keyword menuKeywords Divider 
 
 syn match lineComment "^\s*//.*"
-syn match contentString "\".*\"\s*$" contained
 syn match nameString "\".*\"" contained
 
 syn match optionLine +^\s*Option\s\+\".*\"\s\+\".*\"\s*+ contains=nameString
 syn match titleLine +.*Title.*+ contains=nameString 
 syn match menuLine +.*Menu\s\+\".*\"\s*+ contains=nameString 
+
+syn region brackets start="{" end="}" contains=titleLine,menuLine,optionLine keepend
 
 hi def link menuKeywords Statement
 
@@ -27,3 +28,5 @@ hi def link menuLine PreProc
 hi def link titleLine PreProc
 
 hi def link nameString String
+
+hi def link brackets Type
